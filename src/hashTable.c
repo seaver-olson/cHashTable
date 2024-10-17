@@ -33,3 +33,31 @@ void delHashTable(HashTable* ht){
 	free(ht);
 }
 
+static int hash(char* s, int a, int m){
+	long hash = 0;
+	int len = 0;
+	for(int i =0;s[i]!='\0';i++){
+		len++;
+	}
+	for(int i =0;i<len_s;i++){
+		hash+=(long)pow(a,len-(i+1))*s[i];
+		hash %=m;
+	}
+	return (int)hash;
+}
+
+static int getHash(char*  s, int nb, int attempt){
+	return (hash(s,HT_PRIME_1,nb) +(attempt*(hash(s,HT_PRIME_2,nb)+1)))%nb;
+}
+
+void insert(HashTable* ht,  char* key, char* value){
+
+}
+char* search(HashTable* ht, char* key){
+	return NULL;
+}
+static htItem* HT_DELETED_ITEM = {NULL,NULL};
+
+void delete(HashTable* ht, char* key){
+	
+}
